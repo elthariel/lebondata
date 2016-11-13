@@ -4,6 +4,7 @@ require 'uri'
 require 'lebondata/constants'
 require 'lebondata/parser'
 require 'lebondata/search'
+require 'lebondata/offer_collection'
 
 module LeBonData
   # Main library class, represents a connection to 'Le Bon Coin'
@@ -21,11 +22,12 @@ module LeBonData
     end
 
     def search(options = {})
-      Search.new(self, options)
+      OfferCollection.new Search.new(self, options)
     end
 
     def get(url, params = {})
-      url = "#{LeBonData::BASE_URL}#{url}"
+      url = "#{LeBonData::BASE_URL}#{url}" unless url =~ %r{^https?://}
+      puts 'url = ', url
 
       unless params.empty?
         url << '?' + params.map do |k, v|

@@ -10,8 +10,6 @@ module LeBonData
       @client = client
       @options = LeBonData::DEFAULT_SEARCH_OPTIONS.dup.merge(options)
 
-      puts "OPTIONS = ", @options
-
       @category = @options.delete(:category)
       @region = @options.delete(:region)
       @ad_type = @options.delete(:ad_type)
@@ -23,11 +21,7 @@ module LeBonData
       url = "/#{category}/#{ad_type}/#{region}/"
       params = options.dup.merge o: page_id
 
-      @pages[id] ||= client.get(url, params)
-    end
-
-    def offers(page_id = 1)
-      page(page_id).offers
+      @pages[page_id] ||= client.get(url, params)
     end
   end
 end

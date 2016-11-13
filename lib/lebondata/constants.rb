@@ -13,5 +13,7 @@ module LeBonData
     ad_type: 'offres'
   }.freeze
 
-  OFFERS_XPATH = './/li[@itemtype="http://schema.org/Offer"]'.freeze
+  OFFERS_PER_PAGE = 35
+  OFFERS_SELECTOR = './/li[@itemtype="http://schema.org/Offer"]'.freeze
+  OFFER_SELECTOR = 'section.properties'.freeze
 end
