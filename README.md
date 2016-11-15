@@ -26,7 +26,7 @@ client = LeBonData::Client.new
 
 offers = client.search(region: 'ile_de_france',
                        category: 'livres',
-                       q: 'Assassin royal)
+                       q: 'Assassin royal')
 
 offers.each do |offer|
   # Uncomment to load the offer details from the offer page
