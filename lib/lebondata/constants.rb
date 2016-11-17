@@ -4,7 +4,8 @@ module LeBonData
 
   # The defauult client options
   DEFAULT_CLIENT_OPTIONS = {
-    user_agent_alias: 'Mac Firefox'
+    user_agent_alias: 'Mac Firefox',
+    throttle: 0.75
   }.freeze
 
   DEFAULT_SEARCH_OPTIONS = {

@@ -22,14 +22,14 @@ module LeBonData
       idx_in_page = idx % LeBonData::OFFERS_PER_PAGE
 
       LeBonData::Offer.new search.client,
-                           search.page(page).offers_attr[idx_in_page]
+                           search.page(page).offers_attributes[idx_in_page]
     end
 
     def each
       if block_given?
         pages = count / LeBonData::OFFERS_PER_PAGE + 1
         1.upto(pages) do |page_id|
-          search.page(page_id).offers_attrs.each do |attr|
+          search.page(page_id).offers_attributes.each do |attr|
             yield LeBonData::Offer.new(search.client, attr)
           end
         end

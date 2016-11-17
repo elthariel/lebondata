@@ -3,7 +3,7 @@ module LeBonData
   class Offer
     BASIC_ATTRIBUTES = %w(category address priceCurrency price
                           availabilityStarts).freeze
-    attr_reader :client, :title, :href, :attr
+    attr_reader :client, :title, :href
 
     def initialize(client, attributes)
       @client = client
@@ -13,6 +13,10 @@ module LeBonData
       @href = @attr.delete :href
 
       @loaded = false
+    end
+
+    def attributes
+      @attr
     end
 
     def [](key)
@@ -29,7 +33,7 @@ module LeBonData
     end
 
     def load!
-      @attr.merge! page.offer_attr
+      @attr.merge! page.offer_attributes
     end
   end
 end

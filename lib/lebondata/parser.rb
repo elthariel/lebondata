@@ -7,7 +7,7 @@ module LeBonData
       at('nav.fl').at('a:first').at('span').text.gsub(/\s/, '').to_i
     end
 
-    def offers_attr
+    def offers_attributes
       @offers ||= search(LeBonData::OFFERS_SELECTOR).map do |offer|
         a = offer.at('./a')
 
@@ -34,7 +34,7 @@ module LeBonData
       end
     end
 
-    def offer_attr
+    def offer_attributes
       offer_node = at(LeBonData::OFFER_SELECTOR)
 
       attr = {
